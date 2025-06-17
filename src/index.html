@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Moving tiles" />
+  <!-- <link rel="apple-touch-icon" href="logo192.png" /> -->
+  <!-- <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+
+  <title>Tiles</title>
+  <link rel="stylesheet" href="./app.css" />
+  <script type="module" src="./app.ts"></script>
+</head>
+
+<body>
+  <div class="page-content">
+    <header>
+    </header>
+    <main id="tableau">
+      <button id="hamburger" type="button" class="hamburger">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 4h24M0 12h24M0 20h24" stroke="currentcolor" stroke-width="3" />
+        </svg>
+      </button>
+      <div id="mainMenu" class="popup-menu" tabindex="0">
+        <menu>
+          <li value="addTileGroup">Add Tile Group</li>
+          <li value="setDefaults">Set Defaults...</li>
+        </menu>
+      </div>
+      <div id="tileContextMenu" class="popup-menu" tabindex="0">
+        <menu>
+          <li value="toggleSwap">Toggle Slide/Swap</li>
+        </menu>
+      </div>
+    </main>
+    <footer>
+      <div id="settingsPopover" popover>
+        <div class="settingsUI">
+          <label><input id="swap" type="checkbox" />
+            swap instead of slide
+          </label>
+          <label for="labelSep">Label Delimiter:</label>
+          <select id="labelSep">
+            <option value="">(none)</option>
+            <option value=",">comma</option>
+            <option value="/">forward slash</option>
+            <option value=" ">space</option>
+          </select>
+          <label for="rowSep">Row Delimiter:</label>
+          <select id="rowSep">
+            <option value="\n+">Newline (Fn+Enter)</option>
+          </select>
+          <label for="animationDuration">Animation duration:</label>
+          <input id="animationDuration"
+                 type="range" min="0" max="1000" step="50"
+                 value="500" />
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

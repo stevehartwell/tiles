@@ -1,0 +1,181 @@
+/*
+ *
+ */
+
+@import './settings.css';
+@import './popupMenu.css';
+
+/* ---------------------------------------------------------------- */
+:root {
+    color-scheme: light dark;
+    --sc-bg-color: light-dark(tan, rgb(70, 57, 38));
+    --sc-color: CanvasText;
+    --sc-tile-group-bg-color: rgb(0 0 0 / 10%);
+    --sc-tile-bg-color: light-dark(rgb(235, 222, 166), rgb(172, 163, 121));
+    --sc-tile-fg-color: black;
+    --sc-tile-min-size: 1.2lh;
+}
+html {
+    box-sizing: border-box;
+}
+html,
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    /* if Safari sees this standard selector:
+    user-select: none; /* then it will still allow selection (!)
+    Use this instead: */
+    -webkit-user-select: none;
+}
+.page-content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+header,
+footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+footer {
+    border-top: 0.1lh solid gray;
+    padding-top: 0.1lh;
+}
+main {
+    flex-grow: 1;
+    background-color: var(--sc-bg-color);
+    color: var(--sc-color);
+    padding: 4px;
+}
+
+button.hamburger {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+}
+
+/* ---------------------------------------------------------------- */
+
+.tile-group {
+    box-sizing: border-box;
+    background-color: var(--sc-tile-group-bg-color);
+    resize: both;
+    overflow: auto;
+    font: 1.5em monospace;
+    min-height: 1.6lh;
+    padding: 0.4lh;
+    /* cursor: ns-resize; */
+}
+.tile-group:focus {
+    outline: 3px solid rgb(0 0 0 / 25%);
+}
+.tile-layout {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: start;
+}
+.tile-layout > .tile-group-layout-break {
+    flex-basis: 100%;
+    /* border: 0.1px dotted CanvasText; */
+    /* height: 1lh; */
+    min-height: 0.125lh;
+    max-height: 0.125lh;
+    /* min-height: 4px; */
+    /* border: 1px solid red; */
+    cursor: crosshair;
+}
+.tile-layout > .tile-group-layout-break::before {
+    /* margin-left: -8px; */
+    /* vertical-align: top; */
+    content: "";
+    /* min-height: 0.125lh; */
+    border-left: 0.125lh solid blue;
+    visibility: hidden;
+}
+.tile-layout > .tile-group-layout-break:hover {
+    border-left: 0.5lh solid red;
+    visibility: visible;
+}
+/* .tile-layout > .tile-group-layout-break.sortable-ghost {
+    border-left: 0.125lh solid red;
+    visibility: visible;
+} */
+
+.tile {
+    box-sizing: border-box;
+    display: inline-block;
+    /* vertical-align: middle; */
+    border-radius: 0.2lh;
+    border: 1px solid red;
+    outline-style: none;
+    min-width: var(--sc-tile-min-size);
+    min-height: var(--sc-tile-min-size);
+    max-width: fit-content;
+    max-height: fit-content;
+    padding: 0.1lh;
+    margin: 0.1lh;
+}
+.tile:focus {
+    filter: brightness(90%);
+}
+.tile:not(:empty) {
+    background-color: var(--sc-tile-bg-color);
+    color: var(--sc-tile-fg-color);
+    text-align: center;
+    border: none;
+    box-shadow:
+        -0.1lh -0.1lh 0.2lh rgba(0, 0, 0, 0.25),
+        /* 0 0 0 0.04lh transparent, */
+        0.02lh 0.02lh 0.02lh rgba(0, 0, 0, 0.5) inset,
+        -0.05lh -0.05lh 0.02lh rgb(255, 255, 255, 0.5) inset;
+    text-wrap-mode: nowrap;
+    cursor: grab;
+}
+.tile[contenteditable="true"] {
+    cursor: text;
+    text-align: left;
+}
+/* cursors: 
+    auto | default | none 
+    context-menu | help | pointer | progress | wait | cell | crosshair
+    text | vertical-text | alias | copy | move | no-drop | not-allowed
+    e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize
+    sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize
+    col-resize | row-resize | all-scroll
+    zoom-in | zoom-out
+    grab | grabbing
+*/
+/* ---------------------------------------------------------------- */
+/* these style names are the defaults for SortableJS */
+/*
+.tile.sortable-selected {
+    /* applied when option multiDrag: true /*
+    filter: brightness(90%);
+}
+/**/
+.tile.sortable-chosen {
+    /* only while item is being dragged */
+    cursor: move;
+    filter: brightness(90%);
+}
+.tile.sortable-ghost {
+    opacity: 0.5;
+}
+.sortable-drag {
+    cursor: grabbing;
+}
+.sortable-fallback {
+    /* applied when html5 dragging is unavailable */
+    cursor: grab;
+}
+.tile.sortable-swap-highlight {
+    /* applied when option swap: true */
+    filter: brightness(75%);
+}

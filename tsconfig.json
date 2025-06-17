@@ -1,0 +1,17 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "strict": true, /* Enable all strict type-checking options. */
+        "target": "ESNext", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+        "module": "ESNext",
+        "moduleResolution": "bundler", /* Specify how TypeScript looks up a file from a given module specifier. */
+        // "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+        "allowSyntheticDefaultImports": true,
+        "verbatimModuleSyntax": true,
+        "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+        // "isolatedModules": true,
+        "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    }
+}

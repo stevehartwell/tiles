@@ -1,0 +1,53 @@
+/*
+ *
+ */
+
+
+.popup-menu {
+    --mouse-x: 0;
+    --mouse-y: 0;
+    display: none;
+    box-sizing: border-box;
+    z-index: 5;
+    position: fixed;
+    outline-style: none;
+    border-radius: 0.2em;
+    border: 0.03em solid black;
+    left: 0;
+    top: 0;
+    /* position within enclosing */
+    transform:
+        translateX(min(var(--mouse-x), calc(99vw - 100%)))
+        /**/
+        translateY(min(var(--mouse-y), calc(99vh - 100%)));
+}
+
+.popup-menu menu {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0.25em;
+    background-color: color-mix(in srgb, Canvas, CanvasText 5%);
+    color: color-mix(in srgb, CanvasText, Canvas 5%);
+    border-radius: 0.2em;
+    border: .03em solid darkgray;
+    box-shadow: 0 0.5em 1.0em #222;
+    /* if Safari sees this standard selector:
+    user-select: none; /* then it will still allow selection (!)
+    Use this instead: */
+    -webkit-user-select: none;
+
+    & li {
+        font-size: .9em;
+        padding: 0.2em 0.6em 0.2em 0.6em;
+        border-radius: 0.2em;
+
+        &:hover {
+            background-color: AccentColor;
+            color: #eee;
+            cursor: default;
+            /*pointer*/
+        }
+    }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "tiles",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Moveable tiles for anagrams",
+  "pwaManifest": {
+    "name": "Moveable Tiles",
+    "shortName": "Tiles",
+    "startURL": ".",
+    "theme": "#add8e6",
+    "generateIconOptions": {
+      "baseIcon": "./assets/logo512.png",
+      "sizes": [
+        192,
+        384,
+        512
+      ],
+      "genFavicons": true
+    }
+  },
+  "keywords": [
+    "anagrams"
+  ],
+  "homepage": "https://github.com/stevehartwell/tiles#readme",
+  "bugs": {
+    "url": "https://github.com/stevehartwell/tiles/issues"
+  },
+  "author": {
+    "name": "Steve Hartwell",
+    "email": "steve.hartwell@gmail.com",
+    "url": "https://github.com/stevehartwell"
+  },
+  "source": "src/index.html",
+  "browserslist": "since 2022",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "echo 'Error: no tests yet' && exit 1",
+    "start": "npx parcel serve --dist-dir './(dist-dev)'",
+    "build": "npx parcel build --detailed-report"
+  },
+  "targets": {
+    "default": {
+      "distDir": "./(dist)",
+      "publicUrl": "./"
+    }
+  },
+  "workspaces": [
+    "src",
+    "assets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevehartwell/tiles.git"
+  },
+  "dependencies": {
+    "sortablejs": "latest"
+  },
+  "peerDependencies": {
+    "parcel": "latest"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "latest",
+    "@parcel/packager-xml": "latest",
+    "@parcel/transformer-webmanifest": "latest",
+    "@parcel/validator-typescript": "latest",
+    "@types/sortablejs": "latest",
+    "parcel-config-pwa-manifest": "latest",
+    "parcel-reporter-clean-dist": "latest",
+    "typescript": "latest"
+  }
+}
